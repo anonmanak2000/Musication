@@ -1,0 +1,125 @@
+:root {
+  --background: rgba(115, 222, 252, 0.4);
+  --block-width: 27rem;
+  --title: rgb(26, 25, 104);
+}
+
+.Registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+  height: 100%;
+  padding: 5rem 0;
+  aspect-ratio: 16/3;
+}
+
+.Registration_Component {
+  width: var(--block-width);
+  background-color: white;
+  border-radius: 3rem;
+  padding: 4rem 2.5rem;
+  aspect-ratio: 16/3;
+}
+
+.Registration_Component_Title {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.Registration_Component_Title h2 ~ p {
+  margin-top: 1rem;
+}
+
+.Registration_Component_Title h2 {
+  color: var(--title);
+}
+
+.Registration_Component_Input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+  margin: 2rem 0;
+}
+
+.Separator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 2rem;
+}
+.Separator_text {
+  flex-grow: 0;
+  margin: 0 1rem;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #9f9a9a;
+}
+
+form input {
+  outline: none;
+  width: 100%;
+  border-color: 0.5rem solid rgb(122, 122, 122);
+  padding: 0.5rem;
+}
+
+input:hover ~ .floating-label,
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+  top: -1.5rem;
+  bottom: 0px;
+  left: 0px;
+  font-size: 0.9rem;
+  opacity: 1;
+  color: #404040;
+}
+
+.floating-label-group {
+  position: relative;
+}
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.Register_Details {
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+}
+
+.submit_button button {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+  background-color: rgb(16, 118, 201);
+  cursor: pointer;
+}
+
+.submit_button button[disabled] {
+  background-color: #b7b7b7;
+  cursor: not-allowed;
+}
+
+.Registration_Component_Misc {
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #404040;
+  margin-top: -2rem;
+  padding: 0 2rem;
+}
