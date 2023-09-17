@@ -1,18 +1,16 @@
-import { ChangeEvent, MutableRefObject } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { useRef, useState } from 'react'
+import { ChangeEvent } from 'react'
+import { useNavigate, useLocation, NavigateFunction, Location } from 'react-router-dom'
+import { useState } from 'react'
 
-function VerifyEmail() {
-
-    const verificationCodeRef = useRef() as MutableRefObject<HTMLInputElement>;
+function VerifyEmail(): JSX.Element {
 
     const [isDisabled, setIsDisabled] = useState(true)
 
     const maxVerificationCodeLen = 6
 
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
 
-    const location = useLocation()
+    const location: Location = useLocation()
 
     const userEmail: string = location.state?.userEmail
 
@@ -47,7 +45,7 @@ function VerifyEmail() {
                 <div className='Register_Details'>
                     <form>
                         <div className="floating-label-group">
-                            <input ref={verificationCodeRef} onChange={checkVerificationCode} type="text" id="verificationCode" className="form-control" maxLength={maxVerificationCodeLen} required />
+                            <input onChange={checkVerificationCode} type="text" id="verificationCode" className="form-control" maxLength={maxVerificationCodeLen} required />
                             <label className="floating-label">Single-use code</label>
                         </div>
                         <div className='submit_button'>

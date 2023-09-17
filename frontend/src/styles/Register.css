@@ -24,7 +24,7 @@
 
 .Registration_Component_Title {
   text-align: center;
-  padding: 0 1rem;
+  padding: 0 1.8rem;
 }
 
 .Registration_Component_Title h2 ~ p {
@@ -78,6 +78,10 @@ input:not(:focus):valid ~ .floating-label {
   font-size: 0.9rem;
   opacity: 1;
   color: #404040;
+}
+
+form .floating-label-group:nth-child(n + 2) {
+  margin-top: 2rem;
 }
 
 .floating-label-group {

@@ -1,12 +1,22 @@
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
+import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google'
 import { ChangeEvent, MutableRefObject } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
+import jwtDecode from 'jwt-decode'
 
-function GoogleSSO() {
+function GoogleSSO(): JSX.Element {
 
-    const successLogin = (credentialResponse: object): void => {
-        console.log(credentialResponse)
+    const navigate: NavigateFunction = useNavigate()
+
+
+    const successLogin = (credentialResponse: CredentialResponse): void => {
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const responsePayload: any = jwtDecode(credentialResponse.credential!)
+
+        console.log(responsePayload)
+
+        navigate('/main')
     }
 
     const failedLogin = (): void => {
@@ -32,13 +42,13 @@ function GoogleSSO() {
 
 }
 
-function EmailRegistration() {
+function EmailRegistration(): JSX.Element {
 
-    const emailRef = useRef() as MutableRefObject<HTMLInputElement>;
+    const emailRef: MutableRefObject<HTMLInputElement> = useRef() as MutableRefObject<HTMLInputElement>;
 
     const [isDisabled, setIsDisabled] = useState(true)
 
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
 
     const googleAPIKey = '441082685734-6f52d39balct2n5tc47kk17ro4bu35kk.apps.googleusercontent.com'
 
@@ -55,11 +65,10 @@ function EmailRegistration() {
 
     }
 
+
     const gotoVerifyEmail = (): void => {
         const currentEmail: string = emailRef.current.value
-
         navigate('/register?state=verifyEmail', { state: { userEmail: currentEmail } })
-
     }
 
     return (
